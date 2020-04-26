@@ -127,13 +127,13 @@ variable "dynamodb_table_attributes" {
 
 variable "dynamodb_table_secondary_index" {
   type = list(string)
-  default = [[]]
+  default = []
   description = "List of list of maps representing each table secondary index list. Required due to current HCL limitations"
 }
 
 variable "dynamodb_table_local_secondary_index" {
   type = list(string)
-  default = [[]]
+  default = []
   description = "List of list of maps representing each table local secondary index list. Required due to current HCL limitations"
 }
 
@@ -145,6 +145,6 @@ variable "dynamodb_policy_action_list" {
 
 variable "dynamodb_table_ttl" {
   type = list(string)
-  default = [[]]
+  default = []
   description = "List of list of maps representing each table local secondary index list. Required due to current HCL limitations"
 }

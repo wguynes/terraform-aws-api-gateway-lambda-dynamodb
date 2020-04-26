@@ -1,13 +1,13 @@
 #TAGS
 variable "tags" {
-  type = "map"
+  type = map(string)
   description = "Tags for lambda"
   default = {}
 }
 
 # ENV VARS
 variable "environment_variables" {
-  type = "map"
+  type = map(string)
   description = "Environment variables"
 }
 
