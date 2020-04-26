@@ -11,12 +11,12 @@ variable "api_gw_id" {
 }
 
 variable "dynamodb_arn_list" {
-  type = "list"
+  type = list(string)
   description = "List of ARN's to allow permissions for"
 }
 
 variable "dynamodb_policy_action_list" {
-  type = "list"
+  type = list(string)
   description = "List of ARN's to allow permissions for"
 }
 
