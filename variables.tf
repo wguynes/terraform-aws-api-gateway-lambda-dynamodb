@@ -1,6 +1,6 @@
 #TAGS
 variable "tags" {
-  type = "map"
+  type = map(string)
   description = "Tags for lambda"
   default = {}
 }
@@ -8,7 +8,7 @@ variable "tags" {
 
 #Environment variables
 variable "environment_variables" {
-  type = "map"
+  type = map(string)
   description = "Azure Bot Subscription ID"
 }
 
@@ -100,7 +100,7 @@ variable "api_gw_method" {
 
 variable "api_gw_dependency_list" {
   description = "List of aws_api_gateway_integration* that require aws_api_gateway_deployment dependency"
-  type = "list"
+  type = list(string)
   default = []
 }
 
@@ -116,35 +116,35 @@ variable "api_gw_endpoint_configuration_type" {
 
 #DynamoDB
 variable "dynamodb_table_properties" {
-  type = "list"
+  type = list(string)
   description = "List of maps representing a table each. name (required), read_capacity(default=1), write_capacity(default=1), hash_key(required)"
 }
 
 variable "dynamodb_table_attributes" {
-  type = "list"
+  type = list(string)
   description = "List of list of maps representing each table attributes list. Required due to current HCL limitations"
 }
 
 variable "dynamodb_table_secondary_index" {
-  type = "list"
+  type = list(string)
   default = [[]]
   description = "List of list of maps representing each table secondary index list. Required due to current HCL limitations"
 }
 
 variable "dynamodb_table_local_secondary_index" {
-  type = "list"
+  type = list(string)
   default = [[]]
   description = "List of list of maps representing each table local secondary index list. Required due to current HCL limitations"
 }
 
 variable "dynamodb_policy_action_list" {
   description = "List of Actions to be executed"
-  type = "list"
+  type = list(string)
   default = ["dynamodb:DescribeTable", "dynamodb:DeleteItem", "dynamodb:GetItem", "dynamodb:Scan", "dynamodb:Query"]
 }
 
 variable "dynamodb_table_ttl" {
-  type = "list"
+  type = list(string)
   default = [[]]
   description = "List of list of maps representing each table local secondary index list. Required due to current HCL limitations"
 }
