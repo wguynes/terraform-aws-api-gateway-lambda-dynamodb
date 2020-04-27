@@ -15,21 +15,3 @@ variable "dynamodb_table_attributes" {
   type = list(list(map(string)))
   description = "List of maps representing each table attributes list. Required due to current HCL limitations"
 }
-
-variable "dynamodb_table_secondary_index" {
-  type = list(string)
-  default = []
-  description = "List of list of maps representing each table secondary index list. Required due to current HCL limitations"
-}
-
-variable "dynamodb_table_local_secondary_index" {
-  type = list(string)
-  default = []
-  description = "List of list of maps representing each table local secondary index list. Required due to current HCL limitations"
-}
-
-variable "dynamodb_table_ttl" {
-  type = list(string)
-  default = []
-  description = "List of list of maps representing each table local secondary index list. Required due to current HCL limitations"
-}

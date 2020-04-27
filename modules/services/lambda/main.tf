@@ -29,7 +29,7 @@ resource "aws_lambda_function" "lambda_s3" {
   handler                     = var.lambda_handler
   role                        = var.lambda_role
   timeout                     = var.lambda_timeout
-  source_code_hash            = aws_s3_bucket_object.lambda_dist.etag
+  source_code_hash            = aws_s3_bucket_object.lambda_dist[0].etag
   s3_bucket                   = local.s3_bucket
   s3_key                      = var.lambda_code_s3_key
   memory_size                 = var.lambda_memory_size

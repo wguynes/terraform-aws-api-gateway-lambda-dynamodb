@@ -7,9 +7,24 @@ resource "aws_dynamodb_table" "table" {
   range_key                   = lookup(var.dynamodb_table_properties[count.index], "range_key", "")
   stream_enabled              = lookup(var.dynamodb_table_properties[count.index], "stream_enabled", "")
   stream_view_type            = lookup(var.dynamodb_table_properties[count.index], "stream_view_type", "")
-  attribute                   = var.dynamodb_table_attributes[count.index]
-  local_secondary_index       = var.dynamodb_table_local_secondary_index[count.index]
-  global_secondary_index      = var.dynamodb_table_secondary_index[count.index]
-  ttl                         = var.dynamodb_table_ttl[count.index]
+
+  dynamic "attribute" {
+    for_each = var.dynamodb_table_attributes[count.index]
+    content {
+      name = attribute.value.name
+      type = attribute.value.type
+    }
+  }
+
+  global_secondary_index {
+    name = "GameTitleIndex"
+    hash_key = "GameTitle"
+    range_key = "TopScore"
+    write_capacity = 10
+    read_capacity = 10
+    projection_type = "INCLUDE"
+    non_key_attributes = ["UserId"]
+  }
+
   tags                        = var.tags
 }

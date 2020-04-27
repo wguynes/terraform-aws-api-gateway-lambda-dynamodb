@@ -11,7 +11,7 @@ resource "aws_iam_role_policy" "DynamoDB-Policy" {
   count = var.dynamodb_tables_count > 0 ? 1 : 0
   name = "${aws_iam_role.lambda-role.name}-Policy"
   role = aws_iam_role.lambda-role.id
-  policy = data.template_file.lambda_dynamodb_policy.rendered
+  policy = var.dynamodb_tables_count > 0 ? data.template_file.lambda_dynamodb_policy[0].rendered : {}
 }
 
 resource "aws_iam_role" "lambda-role" {

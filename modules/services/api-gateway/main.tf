@@ -37,7 +37,7 @@ resource "aws_api_gateway_method" "request_method" {
 
 resource "aws_api_gateway_integration" "request_method_integration" {
   count = var.api_gw_disable_resource_creation ? 0 : 1
-  http_method = aws_api_gateway_method.request_method.http_method
+  http_method = aws_api_gateway_method.request_method[0].http_method
   resource_id = aws_api_gateway_resource.messages_resource.id
   rest_api_id = aws_api_gateway_rest_api.api.id
   type = "AWS_PROXY"
