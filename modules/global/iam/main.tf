@@ -1,7 +1,7 @@
 data "template_file" "lambda_dynamodb_policy" {
   count = "${var.dynamodb_tables_count > 0 ? 1 : 0}"
   template = "${file("${path.module}/dynamodb-policy.json")}"
-  vars {
+  vars = {
     policy_arn_list = "${join(", ", formatlist("\"%s\"", var.dynamodb_arn_list))}"
     policy_action_list = "${join(", ", formatlist("\"%s\"", var.dynamodb_policy_action_list))}"
   }

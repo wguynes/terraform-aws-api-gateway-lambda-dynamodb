@@ -1,5 +1,6 @@
 variable "api_gw_disable_resource_creation" {
   description = "Specify whether to create or not the default /api/messages path or stop at /api"
+  default = "false"
 }
 
 variable "api_gw_endpoint_configuration_type" {

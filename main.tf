@@ -68,8 +68,8 @@ module "iam" {
 
   #Setup
   lambda_name                           = local.lambda_function_name
-  api_gw_name                           = module.api_gw.api_gw_name
-  api_gw_id                             = module.api_gw.api_gw_id
+  api_gw_name                           = module.apigw.api_gw_name
+  api_gw_id                             = module.apigw.api_gw_id
   dynamodb_arn_list                     = module.dynamodb.dynamodb_table_arns
   dynamodb_policy_action_list           = var.dynamodb_policy_action_list
   dynamodb_tables_count                 = local.dynamodb_tables_count

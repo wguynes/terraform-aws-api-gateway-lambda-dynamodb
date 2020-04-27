@@ -31,7 +31,7 @@ resource "aws_api_gateway_method" "request_method" {
   count = var.api_gw_disable_resource_creation ? 0 : 1
   authorization = "NONE"
   http_method = var.method
-  resource_id = aws_api_gateway_resource.messages_resource.id
+  resource_id = var.api_gw_disable_resource_creation ? 0 : aws_api_gateway_resource.messages_resource[0].id
   rest_api_id = aws_api_gateway_rest_api.api.id
 }
 
